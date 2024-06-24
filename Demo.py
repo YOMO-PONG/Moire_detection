@@ -50,7 +50,7 @@ def main(config):
         for key in list(checkpoint["state_dict"].keys()):
             new_key = key.replace('module.', '')
             checkpoint["state_dict"][new_key] = checkpoint["state_dict"].pop(key)
-        model.load_state_dict(checkpoint["state_dict"])
+        model.load_state_dict(checkpoint["state_dict"], strict = False)
 
     device = torch.device("cuda:0")
 
